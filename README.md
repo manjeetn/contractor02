@@ -1,16 +1,50 @@
-# React + Vite
+Mr.Contractor (Contractor Management System )
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack role-based Contractor Management System built with MongoDB, Express, React, and Node.js.  
+It helps contractors and labors manage projects, labor Attendances track, payments, and progress transparently — all in one place.
 
-Currently, two official plugins are available:
+ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ Authentication & Authorization
+- Role-based signup & login (Admin, sub-admin, Labor)
+- Email OTP verification system
+- Secure JWT-based authentication
+- Password hashing using bcrypt
+- Error handling with meaningful messages
 
-## React Compiler
+Project Management (Admin Only)
+- Create, edit, and delete projects
+- Assign clients and labors
+- Track project status (Not Started / In Progress / Completed)
+- Track labor attendnces status 
+- Add notes, start & end dates, and service type
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Payment Management
+- Admin can record payments made to labors
+- Labor dashboard automatically shows payments received
+- Real-time transparency between admin and labor
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ Contact & Quote Forms
+- Contact form for general inquiries
+- Quote form for service estimation (painting, polish, duco, PU, etc.)
+
+
+ Tech Stack
+
+Frontend:
+- React.js (Vite)
+- React Router DOM
+- TailwindCSS
+- Lucide Icons
+
+Backend:
+- Node.js
+- Express.js
+- MongoDB (Atlas)
+- Mongoose
+- JWT (Authentication)
+- Nodemailer (Email + OTP)
+
+
+
