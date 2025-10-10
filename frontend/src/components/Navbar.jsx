@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 shadow px-6 py-5 flex justify-between items-center w-full relative">
-      <Link to="/" className="text-xl font-bold text-blue-500">
+      <Link to="/" className="text-2xl font-bold text-blue-500">
        Mr. <span className="text-yellow-400">Contractor</span>
       </Link>
 

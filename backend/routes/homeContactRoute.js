@@ -4,21 +4,11 @@ import Quote from "../models/Quote.js";
 
 const router = express.Router();
 
-/* router.post("/contact", async (req, res) => {
-  try {
-    const contact = new Contact(req.body);
-    await contact.save();
-    res.status(201).json({ message: "Contact form submitted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Error saving contact", error });
-  }
-}); */
 
 router.post("/contact", async (req, res) => {
   try {
     const { name, phone, email, message } = req.body;
 
-    // --- Validation ---
     if (!name || !phone || !email || !message) {
       return res.status(400).json({ message: "All required fields must be filled." });
     }
@@ -42,36 +32,22 @@ router.post("/contact", async (req, res) => {
 });
 
 
-/* router.post("/quote", async (req, res) => {
-  try {
-    const quote = new Quote(req.body);
-    await quote.save();
-    res.status(201).json({ message: "Quote form submitted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Error saving quote", error });
-  }
-});
- */
 router.post("/quote", async (req, res) => {
   try {
     const { fullName, service, email, phone, message } = req.body;
 
-    // --- Validation ---
     if (!fullName || !service || !email || !phone) {
       return res.status(400).json({ message: "All fields required." });
     }
 
-    // Check if phone contains only numbers
     if (!/^\d+$/.test(phone)) {
       return res.status(400).json({ message: "Phone number must contain only digits." });
     }
 
-    // Check phone length (10 digits)
     if (phone.length !== 10) {
       return res.status(400).json({ message: "Phone number must be exactly 10 digits long." });
     }
 
-    // Everything valid -> save to DB
     const quote = new Quote({ fullName, service, email, phone, message });
     await quote.save();
 
