@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import api from '../api/api';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff } from "lucide-react"; // 👈 import these icons
+import { Eye, EyeOff } from "lucide-react"; 
 
 const Signup = () => {
   const navigate = useNavigate();

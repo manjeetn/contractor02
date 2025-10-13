@@ -26,7 +26,7 @@ const Login = () => {
       if (res.data.user.role === 'admin') {
         navigate('/admin');
       } else if (res.data.user.role === 'sub-admin') {
-        navigate('/sub');
+        navigate('/sub-admin');
       } else if (res.data.user.role === 'labor') {
         navigate('/labor');
       } else {
@@ -34,6 +34,9 @@ const Login = () => {
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
+    }finally{
+       setTimeout(() => setError(""), 3000);
+
     }
   };
 
