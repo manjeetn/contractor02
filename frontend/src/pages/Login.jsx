@@ -26,7 +26,7 @@ const Login = () => {
       if (res.data.user.role === 'admin') {
         navigate('/admin');
       } else if (res.data.user.role === 'sub-admin') {
-        navigate('/sub-admin');
+        navigate('/admin');
       } else if (res.data.user.role === 'labor') {
         navigate('/labor');
       } else {
