@@ -109,7 +109,7 @@ const OtpVerify = () => {
         </button>
 
         <p className="text-sm text-gray-800 mt-4 text-center">
-          Didn’t get OTP?{" "}
+          Didn't get OTP?{" "}
           <button
             type="button"
             onClick={handleResend}

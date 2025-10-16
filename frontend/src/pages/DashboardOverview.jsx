@@ -57,7 +57,7 @@ const DashboardOverview = () => {
     <div className="space-y-12">
     <button
     onClick={() => navigate(-1)}
-    className="self-start mb-6 flex items-center text-blue-600 hover:underline  font-medium transition"
+    className="self-start mb-6 flex items-center text-blue-600 hover:underline font-medium transition"
     >
     <ArrowLeft size={20} className="mr-2" /> 
     Back
@@ -66,7 +66,7 @@ const DashboardOverview = () => {
 
       <section>
         <h2 className="text-xl font-semibold mb-2">Analytics Snapshot</h2>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-blue-100 p-4 rounded text-center">
             <div className="text-2xl font-bold">{analytics.totalProjects}</div>
             <div>Total Projects</div>

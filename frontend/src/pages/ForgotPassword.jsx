@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import api from "../api/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ForgotPassword = () => {
-
-  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+const location = useLocation();
+const prefilledEmail = location.state?.email || "";
+const [email, setEmail] = useState(prefilledEmail);
 
  const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
       );
       setTimeout(() => {
         navigate("/reset-password", { state: { email } });
-      }, 1000);
+      }, 5000);
 
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
@@ -38,8 +39,8 @@ const ForgotPassword = () => {
           Forgot Password
         </h2>
 
-        {message && <p className="text-orange-700 mb-4">{message}</p>}
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {message && <p className="text-green-600 mb-4">{message}</p>}
+        {error && <p className="text-red-500 mb-4 font-semibold">{error}</p>}
 
       <input
           type="email"

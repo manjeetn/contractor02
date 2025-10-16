@@ -16,6 +16,7 @@ const [password, setPassword] = useState("");
 const [confirmPassword, setConfirmPassword] = useState("");
 const [message, setMessage] = useState("");
 const [error, setError] = useState("");
+const [resendMsg, setResendMsg] = useState("");
 const[showPassword, setShowPassword] = useState(false);
 const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -59,6 +60,14 @@ setTimeout(() => navigate("/login"), 1500);
 setError(err.response?.data?.message || "Something went wrong");
 }
 };
+
+
+ const handleResend = async () => {
+  navigate("/forgot-password", { state: { email } });
+
+  };
+
+
 return (
 <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-orange-50 to-orange-100 p-4">
 <form
@@ -70,8 +79,8 @@ Reset Password
 </h2>
 
 
-{message && <p className="text-green-600 mb-4">{message}</p>}
-{error && <p className="text-red-500 mb-4">{error}</p>}
+{message && <p className="text-green-600 mb-4 font-semibold">{message}</p>}
+{error && <p className="text-red-500 mb-4 text-md">{error}</p>}
 
 
 <input
@@ -137,6 +146,17 @@ className="w-full bg-[rgba(202,97,22,1)] hover:bg-[rgba(247,116,23,1)] text-whit
 >
 Reset Password
 </button>
+        <p className="text-sm text-gray-800 mt-4 text-center">
+          Didn't get OTP?{" "}
+          <button
+            type="button"
+            onClick={handleResend}
+            className="text-orange-600 font-semibold hover:underline"
+          >
+            Resend OTP
+          </button>
+        </p>
+
 </form>
 </div>
 );
