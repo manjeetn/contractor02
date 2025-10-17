@@ -196,4 +196,25 @@ router.post("/reset-password", async (req, res) => {
   }
 });
 
+
+
+// 🧪 Test Resend connectivity (TEMPORARY)
+router.get("/resend-test", async (req, res) => {
+  try {
+    const response = await fetch("https://api.resend.com/ping", {
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+    });
+
+    console.log("Resend ping:", response.status);
+    res.json({ status: response.status });
+  } catch (error) {
+    console.error("Resend connection failed:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+
 export default router;
