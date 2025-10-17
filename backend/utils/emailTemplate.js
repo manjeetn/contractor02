@@ -2,7 +2,7 @@ export const otpEmailTemplate = (name, otp, purpose = "Verify Your Email") => {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; background-color: #fafafa;">
       <h2 style="text-align: center; color: rgba(255, 102, 0, 1); margin-bottom: 20px;">
-        🔐 ${purpose} - contractorMS
+         ${purpose} 
       </h2>
       <p style="font-size: 14px; color: #333;">Hi <b>${name || "User"}</b>,</p>
       <p style="font-size: 13px; color: #333;">
