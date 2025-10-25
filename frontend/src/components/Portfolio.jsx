@@ -18,7 +18,7 @@ export default function Portfolio() {
        </div> 
 
        <div className="flex flex-col items-center">
-          <div className="aspect-[4/2] bg-gray-300 h-64 flex items-center justify-center rounded-lg">
+          <div className="bg-gray-300 h-64 flex items-center justify-center rounded-lg">
         <img src={after} alt="image not found"
             className="object-cover w-full h-full" />     
           </div>
