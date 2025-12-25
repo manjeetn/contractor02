@@ -37,19 +37,27 @@ router.post("/signup", async (req, res) => {
     const hashedOtp = crypto.createHash("sha256").update(otp).digest("hex");
     await Otp.create({ email, otp: hashedOtp });
 
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM,
-      to: email,
-      subject: "Verify your email",
-      html: otpEmailTemplate(name, otp),
-    });
+   console.log("📨 Attempting to send OTP email");
+console.log("FROM:", process.env.EMAIL_FROM);
+console.log("TO:", email);
+
+const emailResponse = await resend.emails.send({
+  from: process.env.EMAIL_FROM,
+  to: email,
+  subject: "Verify your email",
+  html: otpEmailTemplate(name, otp),
+});
+
+console.log("📧 Resend response:", emailResponse);
 
     console.log("OTP sent to:", email, "Code:", otp);
     res.status(201).json({ message: "User created. Please verify your email." });
   } catch (error) {
-    console.error(" Email sending error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
+  console.error(" Email sending error:");
+  console.error(error?.message);
+  console.error(error?.response || error);
+}
+
 });
 
 router.post("/verify-otp", async (req, res) => {
@@ -89,12 +97,18 @@ router.post("/resend-otp", async (req, res) => {
     const hashedOtp = crypto.createHash("sha256").update(otp).digest("hex");
     await Otp.create({ email, otp: hashedOtp });
 
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM,
-      to: email,
-      subject: "Resend OTP",
-      html: otpEmailTemplate(user.name, otp, "Resend OTP"),
-    });
+console.log("📨 Resending OTP email");
+console.log("FROM:", process.env.EMAIL_FROM);
+console.log("TO:", email);
+
+const emailResponse = await resend.emails.send({
+  from: process.env.EMAIL_FROM,
+  to: email,
+  subject: "Resend OTP",
+  html: otpEmailTemplate(user.name, otp, "Resend OTP"),
+});
+
+console.log("📧 Resend response:", emailResponse);
 
     console.log("OTP resent to:", email, "Code:", otp);
     res.json({ message: "New OTP sent to your email" });
@@ -155,12 +169,18 @@ router.post("/forgot-password", async (req, res) => {
     const hashedOtp = crypto.createHash("sha256").update(otp).digest("hex");
     await Otp.create({ email, otp: hashedOtp });
 
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM,
-      to: email,
-      subject: "Reset Your Password",
-      html: otpEmailTemplate(user.name, otp, "Use this OTP to reset your password"),
-    });
+    console.log("📨 Sending reset password OTP");
+console.log("FROM:", process.env.EMAIL_FROM);
+console.log("TO:", email);
+
+const emailResponse = await resend.emails.send({
+  from: process.env.EMAIL_FROM,
+  to: email,
+  subject: "Reset Your Password",
+  html: otpEmailTemplate(user.name, otp, "Use this OTP to reset your password"),
+});
+
+console.log("📧 Resend response:", emailResponse);
 
     res.json({ message: "OTP sent to your email for password reset" });
   } catch (error) {
