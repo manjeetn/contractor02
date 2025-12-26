@@ -37,26 +37,20 @@ router.post("/signup", async (req, res) => {
     const hashedOtp = crypto.createHash("sha256").update(otp).digest("hex");
     await Otp.create({ email, otp: hashedOtp });
 
-   console.log("📨 Attempting to send OTP email");
-console.log("FROM:", process.env.EMAIL_FROM);
-console.log("TO:", email);
 
-const emailResponse = await resend.emails.send({
+  await resend.emails.send({
   from: process.env.EMAIL_FROM,
   to: email,
   subject: "Verify your email",
   html: otpEmailTemplate(name, otp),
 });
 
-console.log("📧 Resend response:", emailResponse);
-
-    console.log("OTP sent to:", email, "Code:", otp);
     res.status(201).json({ message: "User created. Please verify your email." });
   } catch (error) {
-  console.error(" Email sending error:");
-  console.error(error?.message);
-  console.error(error?.response || error);
+  console.error("Email sending error:", error);
+  res.status(500).json({ message: "Server error" });
 }
+
 
 });
 
@@ -97,18 +91,13 @@ router.post("/resend-otp", async (req, res) => {
     const hashedOtp = crypto.createHash("sha256").update(otp).digest("hex");
     await Otp.create({ email, otp: hashedOtp });
 
-console.log("📨 Resending OTP email");
-console.log("FROM:", process.env.EMAIL_FROM);
-console.log("TO:", email);
-
-const emailResponse = await resend.emails.send({
+  await resend.emails.send({
   from: process.env.EMAIL_FROM,
   to: email,
   subject: "Resend OTP",
   html: otpEmailTemplate(user.name, otp, "Resend OTP"),
 });
 
-console.log("📧 Resend response:", emailResponse);
 
     console.log("OTP resent to:", email, "Code:", otp);
     res.json({ message: "New OTP sent to your email" });
@@ -169,18 +158,13 @@ router.post("/forgot-password", async (req, res) => {
     const hashedOtp = crypto.createHash("sha256").update(otp).digest("hex");
     await Otp.create({ email, otp: hashedOtp });
 
-    console.log("📨 Sending reset password OTP");
-console.log("FROM:", process.env.EMAIL_FROM);
-console.log("TO:", email);
-
-const emailResponse = await resend.emails.send({
+  const emailResponse = await resend.emails.send({
   from: process.env.EMAIL_FROM,
   to: email,
   subject: "Reset Your Password",
   html: otpEmailTemplate(user.name, otp, "Use this OTP to reset your password"),
 });
 
-console.log("📧 Resend response:", emailResponse);
 
     res.json({ message: "OTP sent to your email for password reset" });
   } catch (error) {
@@ -215,26 +199,6 @@ router.post("/reset-password", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
-
-
-// 🧪 Test Resend connectivity (TEMPORARY)
-router.get("/resend-test", async (req, res) => {
-  try {
-    const response = await fetch("https://api.resend.com/ping", {
-      headers: {
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      },
-    });
-
-    console.log("Resend ping:", response.status);
-    res.json({ status: response.status });
-  } catch (error) {
-    console.error("Resend connection failed:", error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
 
 
 export default router;
