@@ -131,7 +131,7 @@ const handleAttendance = async (present) => {
       </div>
 
       {message && (
-        <p className="text-center text-gray-800 font-medium">{message}</p>
+        <p className="text-center text-green-600 font-medium">{message}</p>
       )}
 
       
