@@ -96,7 +96,7 @@ const handleAttendance = async (present) => {
     <div className="p-6 max-w-lg mx-auto bg-gray-50 rounded-xl shadow-md space-y-8">
       
     <button
-    onClick={() => navigate(-1)}
+    onClick={() => navigate("/labor", { replace:true })}
     className="self-start mb-6 flex items-center text-blue-600 hover:underline  font-medium transition"
     >
     <ArrowLeft size={20} className="mr-2" /> 

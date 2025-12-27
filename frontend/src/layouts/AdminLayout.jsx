@@ -17,13 +17,12 @@ const AdminLayout = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  //  Close sidebar when clicking outside (mobile only)
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         sidebarRef.current &&
         !sidebarRef.current.contains(event.target) &&
-        window.innerWidth < 768 // only for mobile
+        window.innerWidth < 768 
       ) {
         setIsCollapsed(true);
       }
@@ -40,7 +39,6 @@ const AdminLayout = () => {
 
   return (
     <div className="flex h-screen flex-col md:flex-row">
-      {/* Top bar for mobile */}
       <div className="flex items-center justify-between bg-gray-800 text-white p-4 md:hidden">
         <h2 className="text-lg font-bold">Admin Panel</h2>
         <button
@@ -51,7 +49,6 @@ const AdminLayout = () => {
         </button>
       </div>
 
-      {/* Sidebar */}
       <aside
         ref={sidebarRef}
         className={`bg-gray-800 text-white flex flex-col transition-all duration-300
@@ -99,7 +96,6 @@ const AdminLayout = () => {
         </nav>
       </aside>
 
-      {/* Main content */}
       <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
         <Outlet />
       </main>
