@@ -146,7 +146,7 @@ const fetchSummary = async () => {
           >
             {labors.map((labor) => (
               <option key={labor._id} value={labor._id}>
-                {labor.name} ({labor.email})
+                {labor.name} 
               </option>
             ))}
           </select>
