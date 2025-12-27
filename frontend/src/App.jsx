@@ -2,6 +2,7 @@ import {Navigate, BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import AuthProvider from './contexts/AuthContexts.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
+import PublicRoute from './routes/PublicRoute.jsx';
 
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
@@ -39,12 +40,12 @@ const App = () => {
         <Routes>
 
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />        
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path='/verify-otp' element={<VerifyOtp />}/>
-          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/login" element={ <PublicRoute> <Login /> </PublicRoute> } />
+          <Route path="/forgot-password" element={ <PublicRoute> <ForgotPassword />  </PublicRoute> } />        
+          <Route path="/reset-password" element={  <PublicRoute> <ResetPassword />  </PublicRoute> } />
+          <Route path="/signup" element={  <PublicRoute> <Signup />  </PublicRoute> } />
+          <Route path='/verify-otp' element={  <PublicRoute> <VerifyOtp />  </PublicRoute> }/>
+          <Route path="/unauthorized" element={<Unauthorized /> } />
 
 
             <Route

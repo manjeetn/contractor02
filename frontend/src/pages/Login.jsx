@@ -24,11 +24,11 @@ const Login = () => {
       login(res.data.token, res.data.user);
 
       if (res.data.user.role === 'admin') {
-        navigate('/admin');
+        navigate('/admin', { replace: true });
       } else if (res.data.user.role === 'sub-admin') {
-        navigate('/admin');
+        navigate('/admin' , { replace: true });
       } else if (res.data.user.role === 'labor') {
-        navigate('/labor');
+        navigate('/labor', { replace: true });
       } else {
         navigate('/');
       }

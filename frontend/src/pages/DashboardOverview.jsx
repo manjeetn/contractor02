@@ -56,7 +56,7 @@ const DashboardOverview = () => {
   return (
     <div className="space-y-12">
     <button
-    onClick={() => navigate(-1)}
+    onClick={() => navigate("/admin", { replace: true })}
     className="self-start mb-6 flex items-center text-blue-600 hover:underline font-medium transition"
     >
     <ArrowLeft size={20} className="mr-2" /> 
