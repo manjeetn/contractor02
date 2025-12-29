@@ -3,6 +3,20 @@ Mr.Contractor (Contractor Management System )
 A full-stack role-based Contractor Management System built with MongoDB, Express, React, and Node.js.  
 It helps contractors and labors manage projects, labor Attendances track, payments, and progress transparently — all in one place.
 
+Live Demo & Demo Credentials
+
+Live Application 
+https://contractor-management-app.vercel.app
+
+Explore the project using the demo sub-admin account mentioned below or sign-up as a labor:
+
+Role: Sub-Admin       
+Email:demo.subadmin@contractorhandle.com    
+Password: Demo@123  
+
+Note: Demo account has limited permissions and is provided only for evaluation purposes.  
+ 
+
  Features
 
  Authentication & Authorization
