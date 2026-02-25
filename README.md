@@ -11,7 +11,7 @@ https://contractor-management-app.vercel.app
 Explore the project using the demo sub-admin account mentioned below or sign-up as a labor:
 
 Role: Sub-Admin       
-Email:demo.sanjeetnishad212@gmail.com    
+Email:sanjeetnishad212@gmail.com    
 Password: Xuc83514
 
 Note: Demo account has limited permissions and is provided only for evaluation purposes.  
